@@ -1,54 +1,77 @@
-#include<iostream>
-#include<math.h>
-#include<iomanip>
-
+#include <iostream>
 using namespace std;
 
-int main(){
+bool gameOver;
+const int width=20;
+const int height=20;
+int x,y, fruitX, fruitY, score;
+enum eDirection {STOP=0, Left, Right, Up, Down};
+eDirection dir;
 
-int num1;
-int num2;
-char op;
+void Setup()
+{
+    gameOver=false;
+    dir = STOP;
+    x=width/2;
+    y=height/2;
 
-cout<<" \n";
-cout<<"Calculator"<<endl;
-cout<<" \n";
-cout<<"Enter your first number \n";
-cout<<" \n";
-cin>>num1;
-cout<<" \n";
-cout<<"Enter Operator ex: + , - , / , * \n";
-cout<<" \n";
-cin>>op;
-cout<<" \n";
-cout<<"Enter your second number \n";
-cout<<" \n";
-cin>>num2;
-cout<<" \n";
-
-
-switch(op){
-    case '+':
-    cout<<"Your answer is "<<num1+num2<<endl;
-    break;
-
-    case '-':
-    cout<<"Your answer is "<<num1-num2<<endl;
-    break;
-
-    case '*':
-    cout<<"Your answer is "<<num1*num2<<endl;
-    break;
-
-    case '/':
-    cout<<"Your answer is "<<num1/num2<<endl;
-    break;
-
-    default:
-    cout<<"... invalid operator input ( + , - , * , / )";
+    fruitX=rand() % width;
+    fruitY=rand() % height;
 }
 
+void Draw()
+{
+    system("clear");//system("clr")
+    for (int i =0;i<width;i++)
+        cout<<"#";
+    cout<<endl;
+ 
+    for (int i=0;i<height+2;i++)
+    {
+        for(int j=0; j<width;j++)
+        {
+            if(j==0)
+                cout<<"#";
+            else
+                cout<<" ";
 
+            if (j== width-1)
+                cout<<"#";
+
+        }
+        cout<<endl;
+    }
+
+
+    system("cls"); //system("clear")
+    for (int i =0;i<width+2;i++)
+        cout<<"#";
+    cout<<endl;
+
+    
+
+}
+
+void Input()
+{
+
+}
+
+void Logic()
+{
+
+}
+
+int main()
+{
+    Setup();
+    while(!gameOver)
+    {
+        Draw();
+        Input();
+        Logic();
+        //Sleep(10)// slows game
+    }
 
     return 0;
 }
